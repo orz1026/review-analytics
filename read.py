@@ -16,6 +16,18 @@ for d in data:
 print('平均是', sum_len / len(data)) # 留言平均長度
 
 
+# 清單篩選
+new = []
+for d in data: #把清單中的東西一筆一筆呼叫出來
+# 每一個d 就是一個單獨留言 d == 字串
+# data 是裝著全部資料清單(100萬筆)
+    if len(d) < 100:
+        new.append(d) #小於100裝進清單
+print('共有', len(new), '筆留言長度小於100')
+print(new[0])
+print(new[1])   
+
+
 
 
 
