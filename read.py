@@ -1,17 +1,22 @@
+import time
+import progressbar
+
 data = []
 count = 0
+bar = progressbar.ProgressBar(max_value=1000000)
+for i in bar(range(100)):
+         # Code that you want to run
+        time.sleep(0.02)
 with open('reviews.txt', 'r') as f:
 	for line in f: # 一行一行讀取
 		data.append(line)
-		count += 1 
-		if count % 1000 == 0: # 求1000餘數
-		    print(len(data)) # 讀取進度
+		count += 1
+		bar.update(count) 
+		# if count % 1000 == 0: # 求1000餘數
+		#     print(len(data)) # 讀取進度
 print('檔案讀取完畢， 總共有', len(data), '筆資料')
 
 print(data[0])
-
-
-
 
 
 # print(len(data)) # 印出幾筆資料(長度)
@@ -43,6 +48,7 @@ print('共有', len(good), '筆留言提到good')
 print(good[0])
 
 #文字計數
+start_time = time.time()
 wc = {} #word_count
 for d in data:
 	words = d.split()
@@ -54,7 +60,8 @@ for d in data:
 for word in wc:
 	if wc[word] > 1000000:
 	    print(word, wc[word])
-
+end_time = time.time()  #紀錄時間
+print('花了', end_time - start_time, 'seconds')
 print(len(wc))
 print(wc['alpha'])
 
@@ -72,8 +79,8 @@ print('感謝使用查詢功能')
 
 
 # 清單快寫法 
-good = [d for d in data if 'good' in d]
-pront(god889)
+# good = [d for d in data if 'good' in d]
+# pront(god889)
 # print(data) # 印出資料全部資料
 # print(data[0]) # 印出特地資料
 # print('------------------')
